@@ -13,7 +13,7 @@ c.enable_tab_bar = true
 c.background = {
     -- 底层是图片
     {
-        source = { File = "D:\\picture\\image1.png"},
+        source = { File = xxx},  -- 填图片路径
         width = "Cover",
         height = "Cover",
         opacity = 1.0,
@@ -28,6 +28,6 @@ c.background = {
 
 
 c.window_decorations = " RESIZE"
-c.default_prog={"D:/rust/.cargo/bin/nu.exe"}
+c.default_prog={xxx} --填shell的路径
 
 return c
