@@ -1,5 +1,5 @@
 {
-  description = "Rust development environment with Flakes";
+  description = "C++ development environment with Flakes";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
