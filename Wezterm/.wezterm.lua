@@ -16,7 +16,7 @@ c.background = {
         source = { File = xxx},  -- 填图片路径
         width = "Cover",
         height = "Cover",
-        opacity = 1.0,
+        opacity = 0.85,
     },
     
        {
