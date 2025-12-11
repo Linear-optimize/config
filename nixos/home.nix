@@ -1,4 +1,4 @@
-{ config,pkgs,...}:
+{ config,pkgs,unstable,...}:
 
 {
 	home.stateVersion = "23.05";
@@ -16,38 +16,39 @@
 		gnumake
 		pkg-config
 		unzip
-		bun
+		
 		nodejs
 		pnpm
 		git
 		coreutils
 		fzf
 		lazygit
+		
 		xclip
 		curl
 		fastfetch
 		cmake
-		ninja
-		llvmPackages.clang  
-        llvmPackages.lldb    
-	    clang-tools 
-	    bear 
-        valgrind    
-        asymptote    
+		 ninja
+		  llvmPackages.clang
+            llvmPackages.lldb
+	     clang-tools
+	     bear
+            
+            valgrind
 	    noto-fonts-cjk-sans
-	    qt6.qtbase	
-	    
+           asymptote				    	
+	    qt6.qtbase
 
-	    (python3.withPackages (p: with p; [
-		  numpy      
-		  matplotlib 
-		  scipy      
-		  pandas
-		  pyqt6  
-		]))
+	    (unstable.python3.withPackages (p: with p; [
+      numpy
+      matplotlib
+      scipy
+      pandas
+      pyqt6
+    ]))
+
 	
-	];
-
-	fonts.fontconfig.enable = true;
+	];	
+	  	fonts.fontconfig.enable = true;
 	
 }
