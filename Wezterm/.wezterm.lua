@@ -1,33 +1,36 @@
-local wezterm=require 'wezterm'
-local c={}
+local wezterm = require 'wezterm'
+local c = {}
 
 if wezterm.config_builder then
-    c= wezterm.config_builder()
+    c = wezterm.config_builder()
 end    
 
-c.color_scheme ='Tokyo Night'
-c.font =wezterm.font('FiraMono Nerd Font Mono',{weight = 'Bold',italic=false})
-c.font_size =14
+-- 保持您原有的配置
+c.color_scheme = 'Catppuccin Macchiato'
+c.font = wezterm.font('Maple Mono Normal NF CN',{weight = 800,italic = false})
+c.font_size = 14
 c.enable_tab_bar = true
 
+
+
 c.background = {
-    -- 底层是图片
+    
     {
-        source = { File = xxx},  -- 填图片路径
-        width = "Cover",
-        height = "Cover",
-        opacity = 0.85,
+        source = {File = "XXX"}, 
+        --  自己图片的地址
+       
     },
-    
-       {
-        source = { Color = "#301934" },
-        opacity = 0.3,
+
+    {
+      source = { Color = '#0c0c11' },
+      opacity = 0.77,
+      height = '100%',
+      width = '100%',
     },
-    
+
 }
 
 
-c.window_decorations = " RESIZE"
-c.default_prog={xxx} --填shell的路径
+c.window_decorations = "RESIZE" 
 
-return c
+c.default_prog = {"D:/rust/.cargo/bin/nu.exe"} -- 填shell的路径
