@@ -16,7 +16,7 @@ c.enable_tab_bar = true
 c.background = {
     
     {
-        source = {File = "XXX"}, 
+        source = {File = "D:/Files/images/image1.png"}, 
         --  自己图片的地址
        
     },
@@ -34,3 +34,5 @@ c.background = {
 c.window_decorations = "RESIZE" 
 
 c.default_prog = {"D:/rust/.cargo/bin/nu.exe"} -- 填shell的路径
+
+return c
