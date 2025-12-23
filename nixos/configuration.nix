@@ -14,7 +14,7 @@ in
     <home-manager/nixos>
   ];
   
-  # ... 其他现有配置 ...
+
   
   # 2. 将 unstable 传递给 Home Manager 配置
   home-manager.users.rene = (import ./home.nix)  {
@@ -22,7 +22,7 @@ in
   unstable = unstable;
   };
 
-  # ... 其他现有配置 ...
+
 
   wsl.enable = true;
   wsl.defaultUser = "rene";
@@ -56,4 +56,6 @@ in
   environment.shells = with pkgs; [
     fish
   ];
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }

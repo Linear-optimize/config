@@ -1,5 +1,7 @@
-local vue_language_server_path = vim.fn.expand("xxx") 
---  自己vue-language-server安装的路径
+local base_path = vim.fn.expand("$HOME/.bun/install/global/node_modules")
+local vue_plugin_path = base_path .. "/@vue/language-server/node_modules/@vue/typescript-plugin"
+
+-- 自己vue language server安装的位置
 
 return {
   {
@@ -7,24 +9,28 @@ return {
     opts = {
       servers = {
         ts_ls = {},
-        vue_ls = {},
+        volar = {},
       },
       setup = {
-        ts_ls = function(server, opts)
-          opts.init_options = opts.init_options or {}
-          opts.init_options.plugins = opts.init_options.plugins or {}
-          table.insert(opts.init_options.plugins, {
-            name = "@vue/typescript-plugin",
-            location = vue_language_server_path,
-            languages = { "vue" },
-          })
+        ts_ls = function(_, opts)
+          opts.init_options = {
+            plugins = {
+              {
+                name = "@vue/typescript-plugin",
+                location = vue_plugin_path,
+                languages = { "vue" },
+              },
+            },
+          }
           opts.filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
-          return false
         end,
-
-        vue_ls = function(_, opts)
+        volar = function(_, opts)
           opts.filetypes = { "vue" }
-          return false
+          opts.init_options = {
+            vue = {
+              hybridMode = true,
+            },
+          }
         end,
       },
     },
@@ -33,11 +39,9 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, {
-        "vue",
-        "jsx",
-        "tsx",
-      })
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, { "vue", "jsx", "tsx" })
+      end
     end,
   },
 
@@ -46,10 +50,10 @@ return {
     opts = {
       formatters_by_ft = {
         vue = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescriptreact = { "prettier" },
         javascript = { "prettier" },
         typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
       },
     },
   },

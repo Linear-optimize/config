@@ -29,14 +29,14 @@
 		fastfetch
 		cmake
 		 ninja
-		  llvmPackages.clang
-            llvmPackages.lldb
+		llvmPackages.clang
+        llvmPackages.lldb
 	     clang-tools
 	     bear
             
-            valgrind
+    	valgrind
 	    noto-fonts-cjk-sans
-           asymptote				    	
+        				    	
 	    qt6.qtbase
 
 	    (unstable.python3.withPackages (p: with p; [
