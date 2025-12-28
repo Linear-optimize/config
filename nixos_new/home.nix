@@ -55,5 +55,7 @@
     maple-mono.NF-CN-unhinted
     kitty
     noto-fonts-color-emoji
+
+    yazi
   ];
 }
