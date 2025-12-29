@@ -57,5 +57,7 @@
     noto-fonts-color-emoji
 
     yazi
+    
+    btop
   ];
 }
