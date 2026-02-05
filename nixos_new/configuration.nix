@@ -1,3 +1,4 @@
+
 { config, pkgs, ... }:
 
 {
@@ -6,10 +7,40 @@
   wsl.defaultUser = "rene";
   wsl.docker-desktop.enable = true;
 
+xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+  };
+
+services.dbus.enable = true;
+
+environment.extraInit = ''
+    export PATH=$(echo $PATH | tr ':' '\n' | grep -v "/mnt/" | tr '\n' ':' | sed 's/:$//')
+    # 同时强制注入驱动路径，解决之前 glxinfo 的问题
+    export LD_LIBRARY_PATH="/usr/lib/wsl/lib:$LD_LIBRARY_PATH"
+  '';
+
+environment.variables = {
+    GALLIUM_DRIVER = "d3d12";
+    MESA_D3D12_DEFAULT_ADAPTER_NAME = "NVIDIA";
+  };
+
+
+
+hardware.graphics = {
+  enable = true;
+  enable32Bit = true;
+};
+ 
+
+
+
   # 用户
   users.users.rene = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel"]; 
+    
     hashedPassword =
       "$6$UtGMaqdMJDSXckHf$FUG4AEWeJH2o9M9eSK10fyjwj0r9YZLI5L6YHvYbFlYstOvasB4GdUVCpltAB72FB485EOq3HFKKpqa.mx82M1";
   };
@@ -35,6 +66,8 @@ nix.settings = {
     "cache.nixos.org-1:6NCHD9SmdCnoVxJ1svHnm44pmgdPtpL1qgZkPyg24uE="
   ];
 };
+
+
 
  
   home-manager.useGlobalPkgs = true;

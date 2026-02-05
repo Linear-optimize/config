@@ -34,13 +34,15 @@
     fastfetch
     cmake
     ninja
-
     llvmPackages.clang
+
     llvmPackages.lldb
     clang-tools
     bear
     valgrind
-
+   usbutils 
+   
+   		
     noto-fonts-cjk-sans
     qt6.qtbase
 
@@ -50,6 +52,8 @@
       scipy
       pandas
       pyqt6
+      pylatexenc
+      
     ]))
 
     maple-mono.NF-CN-unhinted
@@ -57,7 +61,23 @@
     noto-fonts-color-emoji
 
     yazi
-    
+    tree-sitter	     
     btop
+    ripgrep
+   	fd	
+	imagemagick
+	ghostscript
+	tectonic
+	trash-cli
+	sqlite
+	mermaid-cli
+   kmod       
+    pciutils
+    vulkan-tools 
+    mesa-demos    
+   mesa	 	 	
+
+   just		
+   tmux
   ];
 }

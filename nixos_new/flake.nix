@@ -6,6 +6,7 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
+
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -14,13 +15,18 @@
 
   outputs = { self, nixpkgs, home-manager, nixos-wsl, ... }:
   {
-    nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.rene = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
       modules = [
         nixos-wsl.nixosModules.wsl
         home-manager.nixosModules.home-manager
-
+        
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.rene = import ./home.nix;
+        }
      
         {
           nixpkgs.config.allowUnfree = true;
