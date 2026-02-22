@@ -1,5 +1,5 @@
-build:
+up:
     docker-compose up -d
 
-bash:
+sh:
     docker-compose exec rust bash
